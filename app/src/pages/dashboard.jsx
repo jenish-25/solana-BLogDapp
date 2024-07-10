@@ -11,7 +11,8 @@ import { useHistory } from 'react-router-dom'
 export const Dashboard = () => {
   const history = useHistory()
   const [connecting, setConnecting] = useState(false)
-  const { select } = useWallet()
+  const { connected, select } = useWallet()
+  const { user, posts, initialized, initUser, createPost, showModal, setShowModal, } = useBlog()
   const [postTitle, setPostTitle] = useState("")
   const [postContent, setPostContent] = useState("")
 
@@ -52,14 +53,26 @@ export const Dashboard = () => {
               <p className=" font-bold text-sm ml-2 capitalize">
                 {user?.name}
               </p>
-              <Button
-                className="ml-3 mr-2"
-                onClick={() => {
-                  setShowModal(true)
-                }}
-              >
-                Create Post
-              </Button>
+              {initialized ? (
+                <Button
+                  className="ml-3 mr-2"
+                  onClick={() => {
+                    setShowModal(true)
+                  }}
+                >
+                  Create Post
+                </Button>
+              ) : (
+                <Button
+                  className="ml-3 mr-2"
+                  onClick={() => {
+                    initUser()
+                  }}
+                >
+                  Initialize User
+                </Button>
+              )}
+
             </div>
           ) : (
             <Button
