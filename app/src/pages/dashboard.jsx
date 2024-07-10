@@ -15,24 +15,6 @@ export const Dashboard = () => {
   const [postTitle, setPostTitle] = useState("")
   const [postContent, setPostContent] = useState("")
 
-  // Static Data
-  const user = {
-    name: "Random Robot",
-    avatar: "https://avatarfiles.alphacoders.com/283/thumb-283778.jpg",
-  }
-  const connected = true
-  const posts = []
-
-  const createPost = () => {
-
-  }
-
-  const showModal = false
-  const setShowModal = () => {
-
-  }
-  /////////////////
-
   const onConnect = () => {
     setConnecting(true)
     select(PhantomWalletName)
